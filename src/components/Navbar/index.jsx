@@ -3,12 +3,9 @@ import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import { width } from '@mui/system';
+
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -52,14 +49,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function Navbar() {
+export default function Navbar({pokemonFilter}) {
     return (
         <Box sx={{ flexGrow: 1, marginBottom: '1.5em' }}>
             <AppBar position="static" sx={{ backgroundColor: 'red' }}>
                 <Toolbar>
                     <Box display={'flex'} justifyContent={'space-between'} width={'100%'}>
                         <Box component="img" src='/assets/pokeball.svg' />
-                        <Search>
+                        <Search onChange={(e)=> pokemonFilter(e.target.value)}>
                             <SearchIconWrapper>
                                 <SearchIcon />
                             </SearchIconWrapper>

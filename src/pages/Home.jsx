@@ -11,10 +11,10 @@ export const Home = () => {
     }, []);
     const getPokemons = () => {
         let endPoints = [];
-        for (let i = 1; i <= 151; i++) {
+        for (let i = 1; i <= 386; i++) {
             endPoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`)
         }
-        let response = axios.all(endPoints.map((endpoint) => axios.get(endpoint)))
+        axios.all(endPoints.map((endpoint) => axios.get(endpoint)))
             .then((res) => setPokemons(res)).catch((error) => console.log(error));
     };
     const pokemonFilter = (name) => {
